@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jaivishal Ramesh Mandal | Procurement & Supply Chain</title>
+  <meta name="description" content="Procurement & Supply Chain professional specializing in contract visibility, strategic sourcing, analytics, and process improvement." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +23,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ["ui-sans-serif", "system-ui", "Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"],
+            sans: ["DM Sans", "ui-sans-serif", "system-ui", "sans-serif"],
           },
           colors: {
             ink: "#0B1220",              // main text
@@ -99,6 +105,18 @@
     /* Smooth hover lift */
     .lift { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
     .lift:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(2,6,23,0.14); border-color: rgba(124,58,237,0.22); }
+
+    /* Section accent */
+    .section-title { position: relative; padding-left: 14px; }
+    .section-title::before {
+      content: ""; position: absolute; left: 0; top: 4px; bottom: 4px;
+      width: 4px; border-radius: 2px;
+      background: linear-gradient(180deg, #7C3AED, #0891B2);
+    }
+
+    /* Mobile nav */
+    .nav-open { max-height: 20rem; opacity: 1; }
+    .nav-closed { max-height: 0; opacity: 0; overflow: hidden; }
   </style>
 </head>
 
@@ -112,30 +130,45 @@
       <div class="mt-3 glass rounded-2xl shadow-glow">
         <div class="flex items-center justify-between px-4 py-3">
           <a href="#top" class="flex items-center gap-2">
-            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black/5 border border-stroke">
-              <span class="font-bold">JM</span>
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent3/20 border border-stroke">
+              <span class="font-bold text-accent">JM</span>
             </span>
             <span class="font-semibold tracking-tight">Jaivishal Mandal</span>
           </a>
 
           <nav class="hidden md:flex items-center gap-5 text-sm text-muted">
-            <a class="hover:text-ink" href="#about">About</a>
-            <a class="hover:text-ink" href="#impact">Impact</a>
-            <a class="hover:text-ink" href="#experience">Experience</a>
-            <a class="hover:text-ink" href="#projects">Projects</a>
-            <a class="hover:text-ink" href="#skills">Skills</a>
-            <a class="hover:text-ink" href="#contact">Contact</a>
+            <a class="hover:text-ink transition-colors" href="#about">About</a>
+            <a class="hover:text-ink transition-colors" href="#impact">Impact</a>
+            <a class="hover:text-ink transition-colors" href="#experience">Experience</a>
+            <a class="hover:text-ink transition-colors" href="#projects">Projects</a>
+            <a class="hover:text-ink transition-colors" href="#skills">Skills</a>
+            <a class="hover:text-ink transition-colors" href="#contact">Contact</a>
           </nav>
 
           <div class="flex items-center gap-2">
+            <button id="nav-toggle" class="md:hidden p-2 rounded-xl border border-stroke hover:border-black/20" aria-label="Toggle menu">
+              <span class="iconify" data-icon="ph:list-duotone" data-width="24"></span>
+            </button>
             <a href="mailto:jaivishalmandal@gmail.com"
-               class="px-3 py-2 rounded-xl bg-ink text-white text-sm font-semibold hover:opacity-90">
+               class="hidden md:inline-flex px-3 py-2 rounded-xl bg-ink text-white text-sm font-semibold hover:opacity-90 transition-opacity">
               Email
             </a>
             <a href="#contact"
-               class="px-3 py-2 rounded-xl border border-stroke text-sm hover:border-black/20">
+               class="px-3 py-2 rounded-xl border border-stroke text-sm hover:border-black/20 transition-colors">
               Contact
             </a>
+          </div>
+        </div>
+        <!-- Mobile nav -->
+        <div id="mobile-nav" class="nav-closed md:hidden transition-all duration-300">
+          <div class="px-4 pb-4 pt-0 flex flex-col gap-2 border-t border-stroke mt-3 pt-3">
+            <a class="py-2 text-muted hover:text-ink" href="#about" data-nav-close>About</a>
+            <a class="py-2 text-muted hover:text-ink" href="#impact" data-nav-close>Impact</a>
+            <a class="py-2 text-muted hover:text-ink" href="#experience" data-nav-close>Experience</a>
+            <a class="py-2 text-muted hover:text-ink" href="#projects" data-nav-close>Projects</a>
+            <a class="py-2 text-muted hover:text-ink" href="#skills" data-nav-close>Skills</a>
+            <a class="py-2 text-muted hover:text-ink" href="#contact" data-nav-close>Contact</a>
+            <a class="py-2 pt-3 border-t border-stroke" href="mailto:jaivishalmandal@gmail.com">Email</a>
           </div>
         </div>
       </div>
@@ -159,10 +192,8 @@
               Jaivishal Ramesh Mandal
             </h1>
 
-            <p class="text-lg md:text-xl text-muted max-w-3xl">
-              Procurement & supply chain professional focused on <span class="text-ink font-semibold">contract visibility</span>,
-              <span class="text-ink font-semibold">competitive sourcing</span>, and <span class="text-ink font-semibold">data-driven decision making</span> —
-              delivering measurable outcomes through dashboards, models, and process improvements.
+            <p class="text-lg md:text-xl text-muted max-w-3xl leading-relaxed">
+              Results-driven procurement & supply chain professional with deep expertise in <span class="text-ink font-semibold">contract visibility</span>, <span class="text-ink font-semibold">competitive sourcing</span>, <span class="text-ink font-semibold">vendor performance optimization</span>, <span class="text-ink font-semibold">process improvement</span>, and <span class="text-ink font-semibold">data-driven decision making</span>—delivering measurable outcomes like multimillion-dollar cost savings, streamlined processes, and enhanced supply chain resilience through advanced Excel/Power BI dashboards, predictive pricing models, strategic sourcing initiatives, and end-to-end procurement lifecycle management.
             </p>
 
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -184,23 +215,25 @@
               </div>
             </div>
 
-            <!-- mini proof strip -->
-            <div class="mt-2 grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div class="glass rounded-2xl p-4 border border-stroke lift">
-                <div class="text-2xl font-bold">50+</div>
-                <div class="text-xs text-muted mt-1">Contracts consolidated into a dashboard</div>
-              </div>
-              <div class="glass rounded-2xl p-4 border border-stroke lift">
-                <div class="text-2xl font-bold">30%</div>
-                <div class="text-xs text-muted mt-1">Visibility & compliance improvement</div>
-              </div>
-              <div class="glass rounded-2xl p-4 border border-stroke lift">
-                <div class="text-2xl font-bold">$500K</div>
-                <div class="text-xs text-muted mt-1">Savings contribution via improvements</div>
-              </div>
-              <div class="glass rounded-2xl p-4 border border-stroke lift">
-                <div class="text-2xl font-bold">50%</div>
-                <div class="text-xs text-muted mt-1">Faster recovery (roadmap projection)</div>
+            <!-- Key metrics strip -->
+            <div class="mt-4 pt-5 border-t border-stroke/60">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="rounded-2xl p-4 bg-white/50 border border-stroke lift">
+                  <div class="text-2xl font-bold text-accent">50+</div>
+                  <div class="text-xs text-muted mt-1">Contracts in dashboard</div>
+                </div>
+                <div class="rounded-2xl p-4 bg-white/50 border border-stroke lift">
+                  <div class="text-2xl font-bold text-accent3">+30%</div>
+                  <div class="text-xs text-muted mt-1">Visibility & compliance</div>
+                </div>
+                <div class="rounded-2xl p-4 bg-white/50 border border-stroke lift">
+                  <div class="text-2xl font-bold text-accent2">$500K</div>
+                  <div class="text-xs text-muted mt-1">Savings contribution</div>
+                </div>
+                <div class="rounded-2xl p-4 bg-white/50 border border-stroke lift">
+                  <div class="text-2xl font-bold text-accent3">50%</div>
+                  <div class="text-xs text-muted mt-1">Faster recovery (projected)</div>
+                </div>
               </div>
             </div>
 
@@ -210,13 +243,12 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="pt-12 md:pt-14 scroll-mt-28">
+    <section id="about" class="pt-14 md:pt-16 scroll-mt-28">
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="md:col-span-2 glass rounded-3xl p-7 border border-stroke lift">
-          <h2 class="text-xl font-semibold">About</h2>
+        <div class="md:col-span-2 glass rounded-3xl p-7 md:p-8 border border-stroke lift">
+          <h2 class="text-xl font-semibold section-title">About</h2>
           <p class="mt-3 text-muted leading-relaxed">
-            I work at the intersection of procurement operations and analytics — building clean systems that make
-            vendor decisions faster, contract governance clearer, and reporting more actionable.
+            I work at the intersection of procurement operations and analytics—building clean systems that make vendor decisions faster, contract governance clearer, and reporting more actionable. I combine hands-on procurement experience with strong analytical skills to deliver impact that stakeholders can see and measure.
           </p>
           <div class="mt-5 flex flex-wrap gap-2">
             <span class="chip text-xs px-3 py-1 rounded-full">Contract lifecycle tracking</span>
@@ -226,8 +258,8 @@
           </div>
         </div>
 
-        <div class="glass rounded-3xl p-7 border border-stroke lift">
-          <h3 class="text-xl font-semibold">What I bring</h3>
+        <div class="glass rounded-3xl p-7 md:p-8 border border-stroke lift">
+          <h3 class="text-xl font-semibold section-title">What I bring</h3>
           <ul class="mt-3 space-y-3 text-sm text-muted">
             <li class="flex gap-3">
               <span class="iconify text-accent" data-icon="ph:target-duotone" data-width="20"></span>
@@ -247,11 +279,11 @@
     </section>
 
     <!-- IMPACT -->
-    <section id="impact" class="pt-12 md:pt-14 scroll-mt-28">
+    <section id="impact" class="pt-14 md:pt-16 scroll-mt-28">
       <div class="flex items-end justify-between gap-4">
         <div>
-          <h2 class="text-xl font-semibold">Impact</h2>
-          <p class="text-sm text-muted mt-1">High-signal highlights (metrics first).</p>
+          <h2 class="text-xl font-semibold section-title">Impact</h2>
+          <p class="text-sm text-muted mt-1">Key results and measurable outcomes.</p>
         </div>
         <div class="hidden md:flex items-center gap-2 text-xs text-muted">
           <span class="inline-block h-2 w-2 rounded-full bg-accent"></span> dashboards
@@ -264,7 +296,7 @@
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <div class="text-3xl font-bold">50+ contracts</div>
+              <div class="text-3xl font-bold bg-gradient-to-r from-accent to-accent3 bg-clip-text text-transparent">50+ contracts</div>
               <div class="text-sm text-muted mt-1">IT contract dashboard built from scratch</div>
             </div>
             <span class="iconify text-accent3 animate-floaty" data-icon="ph:grid-four-duotone" data-width="34"></span>
@@ -277,7 +309,7 @@
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <div class="text-3xl font-bold">+30% visibility</div>
+              <div class="text-3xl font-bold text-accent">+30% visibility</div>
               <div class="text-sm text-muted mt-1">Procurement visibility & compliance improvement</div>
             </div>
             <span class="iconify text-accent animate-floaty" data-icon="ph:seal-check-duotone" data-width="34"></span>
@@ -290,7 +322,7 @@
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <div class="text-3xl font-bold">$500K savings</div>
+              <div class="text-3xl font-bold text-accent2">$500K savings</div>
               <div class="text-sm text-muted mt-1">Projects & ideas with measurable value</div>
             </div>
             <span class="iconify text-accent2 animate-floaty" data-icon="ph:currency-dollar-duotone" data-width="34"></span>
@@ -303,7 +335,7 @@
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <div class="text-3xl font-bold">50% faster</div>
+              <div class="text-3xl font-bold text-accent3">50% faster</div>
               <div class="text-sm text-muted mt-1">Disruption recovery (strategy roadmap projection)</div>
             </div>
             <span class="iconify text-accent3 animate-floaty" data-icon="ph:rocket-launch-duotone" data-width="34"></span>
@@ -316,10 +348,11 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="pt-12 md:pt-14 scroll-mt-28">
-      <h2 class="text-xl font-semibold">Experience</h2>
+    <section id="experience" class="pt-14 md:pt-16 scroll-mt-28">
+      <h2 class="text-xl font-semibold section-title">Experience</h2>
+      <p class="text-sm text-muted mt-1">Procurement, supply chain & operations roles.</p>
 
-      <div class="mt-6 space-y-4">
+      <div class="mt-6 space-y-5">
         <!-- CTA -->
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
@@ -427,46 +460,131 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="pt-12 md:pt-14 scroll-mt-28">
-      <h2 class="text-xl font-semibold">Academic Projects</h2>
-      <p class="text-sm text-muted mt-1">Two strong proof pieces: resilience strategy + Lean Six Sigma optimization.</p>
+    <section id="projects" class="pt-14 md:pt-16 scroll-mt-28">
+      <h2 class="text-xl font-semibold section-title">Projects</h2>
+      <p class="text-sm text-muted mt-1">Supply chain strategy, S&OP, Six Sigma, inventory optimization, and AI/ML analytics.</p>
 
       <div class="mt-6 grid md:grid-cols-2 gap-4">
+        <!-- AI Scorecard - highest impact -->
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex items-start justify-between gap-3">
-            <div>
-              <h3 class="text-lg font-semibold">Resilient Supply Navigators: Post-COVID Supply Chain Strategy</h3>
-              <p class="text-sm text-muted mt-1">Mar 2025 – May 2025</p>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold">AI-Powered Dealer & Supplier Scorecard</h3>
+              <p class="text-sm text-muted mt-1">Warranty & supply chain optimization</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <span class="chip text-xs px-2.5 py-0.5 rounded-full">ML • XGBoost • 962% ROI</span>
+              </div>
             </div>
-            <span class="iconify text-accent3" data-icon="ph:globe-hemisphere-west-duotone" data-width="28"></span>
+            <span class="iconify text-accent3 shrink-0" data-icon="ph:cpu-duotone" data-width="28"></span>
           </div>
           <ul class="mt-4 space-y-2 text-sm text-muted">
-            <li>• Analyzed risks (logistics, shortages, JIT flaws); researched diversification and IoT/blockchain solutions.</li>
-            <li>• Built a resilience roadmap leveraging reshoring and AI-driven visibility; projected 50% faster recovery time.</li>
+            <li>• Developed AI-driven scorecard with ML models (Logistic Regression, XGBoost, K-means) integrated with SAP/Oracle ERP.</li>
+            <li>• Reduced claim approval time from 5 to 2 days, accuracy 88%→96%, supplier defects 7%→3%.</li>
+            <li>• $260K implementation, $630K annual profit, 5.6-month payback; Kotter's 8-Step change plan, Power BI/Tableau dashboards.</li>
           </ul>
         </div>
 
+        <!-- Royal Enfield Six Sigma -->
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <div class="flex items-start justify-between gap-3">
-            <div>
-              <h3 class="text-lg font-semibold">Operations Optimization — BIG Widget Manufacturing (Lean Six Sigma)</h3>
-              <p class="text-sm text-muted mt-1">Sep 2024 – Nov 2024</p>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold">Royal Enfield BS3 Himalayan — Six Sigma DMAIC</h3>
+              <p class="text-sm text-muted mt-1">Automotive quality improvement</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <span class="chip text-xs px-2.5 py-0.5 rounded-full">Fishbone • 5 Whys • SPC</span>
+              </div>
             </div>
-            <span class="iconify text-accent" data-icon="ph:factory-duotone" data-width="28"></span>
+            <span class="iconify text-accent shrink-0" data-icon="ph:seal-check-duotone" data-width="28"></span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-muted">
+            <li>• Led Six Sigma DMAIC to reduce 25–30% defect rate; root cause analysis on electrical, frame, gearbox, brake issues.</li>
+            <li>• Implemented testing, supplier quality, training, process control (SPC, SOP updates).</li>
+            <li>• Projected defect reduction to &lt;5%; customer satisfaction ~60%→~85–90%; data-driven visualizations.</li>
+          </ul>
+        </div>
+
+        <!-- Cookie Launch -->
+        <div class="glass rounded-3xl p-7 border border-stroke lift">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold">New Cookie Launch Planning</h3>
+              <p class="text-sm text-muted mt-1">Fictional baking company</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <span class="chip text-xs px-2.5 py-0.5 rounded-full">S&OP • Team of 7</span>
+              </div>
+            </div>
+            <span class="iconify text-accent2 shrink-0" data-icon="ph:storefront-duotone" data-width="28"></span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-muted">
+            <li>• Led team of 7 on portfolio integration, demand forecasting, supply chain alignment.</li>
+            <li>• Developed product concept, marketing plan, sales forecast with growth trends and seasonality.</li>
+            <li>• Designed sourcing, production, inventory, distribution; delivered executive S&OP presentation.</li>
+          </ul>
+        </div>
+
+        <!-- Inventory Re-order -->
+        <div class="glass rounded-3xl p-7 border border-stroke lift">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold">Inventory Re-order Optimization</h3>
+              <p class="text-sm text-muted mt-1">Sep 2024 – Oct 2024</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <span class="chip text-xs px-2.5 py-0.5 rounded-full">Demand • Lead times</span>
+              </div>
+            </div>
+            <span class="iconify text-accent3 shrink-0" data-icon="ph:package-duotone" data-width="28"></span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-muted">
+            <li>• Analyzed inventory data for re-ordering plan aligned with target stock levels.</li>
+            <li>• Assessed on-hand inventory, costs, lead times, sales, vendor details for optimized strategy.</li>
+            <li>• Balanced stock levels, minimized excess; improved supply chain efficiency.</li>
+          </ul>
+        </div>
+
+        <!-- Resilient Supply Navigators -->
+        <div class="glass rounded-3xl p-7 border border-stroke lift">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold">Resilient Supply Navigators: Post-COVID Strategy</h3>
+              <p class="text-sm text-muted mt-1">Mar 2025 – May 2025</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <span class="chip text-xs px-2.5 py-0.5 rounded-full">Reshoring • 50% faster recovery</span>
+              </div>
+            </div>
+            <span class="iconify text-accent3 shrink-0" data-icon="ph:globe-hemisphere-west-duotone" data-width="28"></span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-muted">
+            <li>• Analyzed risks (logistics, shortages, JIT flaws); researched diversification, IoT/blockchain.</li>
+            <li>• Built resilience roadmap with reshoring and AI-driven visibility; 50% faster recovery projection.</li>
+          </ul>
+        </div>
+
+        <!-- BIG Widget -->
+        <div class="glass rounded-3xl p-7 border border-stroke lift">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold">Operations Optimization — BIG Widget (Lean Six Sigma)</h3>
+              <p class="text-sm text-muted mt-1">Sep 2024 – Nov 2024</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <span class="chip text-xs px-2.5 py-0.5 rounded-full">6 KPIs • $1.5M budget</span>
+              </div>
+            </div>
+            <span class="iconify text-accent shrink-0" data-icon="ph:factory-duotone" data-width="28"></span>
           </div>
           <ul class="mt-4 space-y-2 text-sm text-muted">
             <li>• Optimized manufacturing via 6 KPIs; reduced defects/waste, boosted capacity, cut costs, enhanced safety.</li>
-            <li>• Designed solutions within $1.5M budget, aligned to Annual Operating Plan with detailed calculations.</li>
+            <li>• Solutions within $1.5M budget, aligned to Annual Operating Plan with detailed calculations.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="pt-12 md:pt-14 scroll-mt-28">
-      <h2 class="text-xl font-semibold">Skills & Tools</h2>
+    <section id="skills" class="pt-14 md:pt-16 scroll-mt-28">
+      <h2 class="text-xl font-semibold section-title">Skills & Tools</h2>
+      <p class="text-sm text-muted mt-1">Software, certifications, and core strengths.</p>
 
-      <div class="mt-6 grid md:grid-cols-3 gap-4">
+      <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="glass rounded-3xl p-7 border border-stroke lift">
           <h3 class="font-semibold">Software</h3>
           <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
@@ -477,6 +595,10 @@
             <div class="flex items-center gap-2 chip rounded-xl px-3 py-2">
               <span class="iconify" data-icon="simple-icons:microsoftpowerbi" data-width="18"></span>
               <span class="text-muted">Power BI</span>
+            </div>
+            <div class="flex items-center gap-2 chip rounded-xl px-3 py-2">
+              <span class="iconify" data-icon="logos:tableau" data-width="18"></span>
+              <span class="text-muted">Tableau</span>
             </div>
             <div class="flex items-center gap-2 chip rounded-xl px-3 py-2">
               <span class="iconify" data-icon="simple-icons:sap" data-width="18"></span>
@@ -513,6 +635,16 @@
         </div>
 
         <div class="glass rounded-3xl p-7 border border-stroke lift">
+          <h3 class="font-semibold">Analytics & ML</h3>
+          <div class="mt-4 flex flex-wrap gap-2 text-sm">
+            <span class="chip rounded-lg px-3 py-1.5">XGBoost</span>
+            <span class="chip rounded-lg px-3 py-1.5">Logistic Regression</span>
+            <span class="chip rounded-lg px-3 py-1.5">K-means</span>
+            <span class="chip rounded-lg px-3 py-1.5">Root cause analysis</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-7 border border-stroke lift">
           <h3 class="font-semibold">Strengths</h3>
           <ul class="mt-4 space-y-3 text-sm text-muted">
             <li class="flex gap-2"><span class="iconify text-accent" data-icon="ph:sparkle-duotone" data-width="18"></span> Communication</li>
@@ -526,7 +658,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="pt-12 md:pt-14 scroll-mt-28">
+    <section id="contact" class="pt-14 md:pt-16 scroll-mt-28">
       <div class="ring-gradient">
         <div class="glass rounded-3xl p-7 md:p-10 border border-stroke shadow-glow">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -553,8 +685,14 @@
             </div>
           </div>
 
-          <div class="mt-7 text-xs text-muted">
-            © <span id="y"></span> Jaivishal Mandal • Procurement • Supply Chain • Analytics
+          <div class="mt-8 pt-6 border-t border-stroke/60 text-xs text-muted flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span>© <span id="y"></span> Jaivishal Mandal</span>
+            <span>•</span>
+            <span>Procurement</span>
+            <span>•</span>
+            <span>Supply Chain</span>
+            <span>•</span>
+            <span>Analytics</span>
           </div>
         </div>
       </div>
@@ -563,6 +701,25 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    (function() {
+      var toggle = document.getElementById("nav-toggle");
+      var nav = document.getElementById("mobile-nav");
+      var links = document.querySelectorAll("[data-nav-close]");
+      if (toggle && nav) {
+        toggle.addEventListener("click", function() {
+          nav.classList.toggle("nav-closed");
+          nav.classList.toggle("nav-open");
+        });
+        links.forEach(function(l) {
+          l.addEventListener("click", function() {
+            nav.classList.add("nav-closed");
+            nav.classList.remove("nav-open");
+          });
+        });
+      }
+    })();
   </script>
 </body>
 </html>
